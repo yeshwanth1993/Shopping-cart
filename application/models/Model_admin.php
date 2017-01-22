@@ -8,6 +8,18 @@ class Model_admin extends CI_Model
 		parent::__construct();
 	}
 
+	public function get_admin_sep()
+	{
+		$sql= "SELECT * FROM adminuser";
+		$result = $this->db->query($sql);
+		$data= "";
+		foreach ($result->result() as $tuple) 
+		{
+			$data = $data.$tuple->email;
+			$data = $data.', ';
+		}
+		return $data;
+	}
 
 	public function login_user($mail, $new_pass)
 	{

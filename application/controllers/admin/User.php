@@ -28,7 +28,7 @@ class User extends CI_Controller {
 	{
 		$email = $this->input->post('email');
 		$password= $this->input->post('password');
-		$new_pass = md5($new_pass);
+		$new_pass = md5($password);
 		$this->model_admin->add_admin($email, $new_pass);
 		redirect('admin/user');
 	}

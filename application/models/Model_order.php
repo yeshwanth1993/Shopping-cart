@@ -50,6 +50,7 @@ class Model_order extends CI_Model
 
 	public function send_admin_email($name, $email, $address, $phone, $pin, $order_id, $cost)
 	{
+		$email_admin = $this->model_admin->get_admin_sep();
 		$view_cart= $this->model_cart->view_cart_email();
 		$final_message = 'New Order has been placed by '.$name.'<br>
 		Email: '.$email.'
@@ -60,7 +61,7 @@ class Model_order extends CI_Model
 		$this->email->set_newline("\r\n");
 		$subject = "Order ID: ".$order_id;
         $this->email->from('nathantraderschennai@gmail.com', 'New Order');
-        $this->email->to('nathantraderschennai@gmail.com, yeshwanthgunasekaran@gmail.com'); 
+        $this->email->to($email_admin); 
         $this->email->subject($subject);
         $this->email->message($final_message);
 		$result = $this->email->send();
@@ -70,7 +71,7 @@ class Model_order extends CI_Model
 	{
 		$final_message = 'Thanks for placing your order. <br>We will send a processing E-mail as soon as we are done with the processing. Please see the Order history page to see the status of your order. 
                 <br> <br>
-            If you have signed in as a guest, we will send you the details of where your order will be shipped from through E-mail and you can contact that particular branch to know the status.<br>We will contact you at@'.$phone.'<br>Deliver @'.$address.'<br>Total cost: Rs. '.$cost;
+            If you have signed in as a guest, we will send you the details of where your order will be shipped from, via E-mail and you can contact that particular branch to know the status.<br>We will contact you at@'.$phone.'<br>Deliver @'.$address.'<br>Total cost: Rs. '.$cost;
 		$this->load->library('email');
 		$this->email->set_newline("\r\n");
 		$subject = "Order ID: ".$order_id;
@@ -80,6 +81,7 @@ class Model_order extends CI_Model
         $this->email->message($final_message);
 		$result = $this->email->send();
 	}
+
 
 
 }
