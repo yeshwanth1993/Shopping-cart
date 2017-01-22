@@ -1,0 +1,565 @@
+a:2:{s:6:"expire";i:1485158665;s:7:"headers";a:0:{}}ENDCI---><!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Nathan Traders</title>
+    <style type="text/css">
+        body{
+            background-image: url("http://[::1]/NT/images/b3.png");
+        }
+    </style>
+    <link href="http://[::1]/NT//css/bootstrap.css" rel="stylesheet">
+    <link rel='stylesheet' media='screen and (max-width: 992px)' href='http://[::1]/NT/css/medium.css' />
+    <link href="http://[::1]/NT/css/shop-homepage.css" rel="stylesheet">
+    <link rel="icon" 
+      type="image/png" 
+      href="http://[::1]/NT/images/myicon.png">
+
+<script type="text/javascript">
+
+function add_to_cart(product_id)
+{
+    var cart_num = null;
+    $.ajax({
+        type: 'post',
+        url: 'http://[::1]/NT//nathantraders/add_cart_ajax',
+        dataType: 'json',
+        data: {
+        product_id: product_id
+        },
+        success: function (response) 
+        {
+            // We get the element having id of display_info and put the response inside it
+            cart_num = response.cart_num;
+            $( "#cart_num" ).html (cart_num);
+            setTimeout(function() {$('#cart_success').modal('hide');}, 1250);
+        }
+    });
+}
+</script>
+
+</head>
+
+<body>
+<div id="loader"></div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="http://[::1]/NT/"><p class="menu-sty">Home</p></a>
+                    </li>
+                    <li>
+                        <a href="http://[::1]/NT//s/about_us"><p class="menu-sty">About Us</p></a>
+                    </li>
+                    <li>
+                        <a href="http://[::1]/NT//nathantraders/areas_we_serve"><p class="menu-sty">Areas We Serve</p></a>
+                    </li>
+                    <li>
+                        <a href="http://[::1]/NT//s/contact_us"><p class="menu-sty">Contact us</p></a>
+                    </li> 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li> 
+                        <a href="http://[::1]/NT//nathantraders/account"> <p class="menu-sty">Welcome, Guest </p></a>
+                    </li>
+                    <li> 
+                                            </li>
+                    <li> 
+                        <a href="http://[::1]/NT//nathantraders/cart"> <p class="menu-sty"><span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                        <span class="badge" id="cart_num"> 
+                        0 </span></p></a>
+                    </li>
+                    <li> 
+                        <a href="http://[::1]/NT//nathantraders/login"> <p class="menu-sty">Login / Register</p></a>                    </li>
+
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div class="container" style="background-color: #fff; padding-top: 20px; padding-bottom: 20px; box-shadow: 2px 4px 3px 1px rgba(0, 0, 0, 0.2); margin-top: -20px">
+    <div class="row">
+        <div class="col-md-3">
+        <a href="http://[::1]/NT/">
+            <img src="http://[::1]/NT/images/logo.png" class="img-responsive"> </a>
+        </div>
+        
+            <form action="http://[::1]/NT//nathantraders/search" method= "GET">
+                <div class="form-group">
+                <div class="col-md-5"> 
+                    <input type="text" style="display: inline;" class="form-control" id="title1" name="search" type="text" value="" placeholder="Search Products"> </div>
+                    <div class="col-md-3"> 
+                    <button type="submit" style="display: inline;" class="btn btn-default fix-height">Search</button> </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+ 
+     <br> <br>
+</body>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id = "cart_success" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    
+      <div class="modal-body">
+     
+      <H2 class="text-center">Success!</H2>
+      <h4 class="text-center">Item Added to cart</h4>
+     
+      </div>
+    </div>
+  </div>
+</div>
+
+</html>
+    <!-- Page Content -->
+    <div class="container" style="background-color: #fff; padding-top: 20px; box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.2);">
+
+        <div class="row">
+        <style type="text/css">
+	
+.panel-body-categories { padding:0px; }
+.panel-body-categories table tr td { padding-left: 15px }
+.panel-body-categories .table {margin-bottom: 0px; }
+</style>
+
+
+<div class="col-md-3 col-lg-3">
+    <p class="lead">Categories</p>
+
+<div class="container-fluid">
+    <div class="row">
+        
+            <div class="panel-group" id="accordion">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="http://[::1]/NT//nathantraders/all_products">All Products</a>
+                        </h4>
+                    </div>
+                    <div id="collapse" class="panel-collapse collapse in">
+
+                    </div>
+                </div>
+
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Raw rice</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body-categories">
+                            <table class="table">
+                                <tr>
+                                    <td> <a href="http://[::1]/NT//nathantraders/category?category=Raw rice">View All</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://[::1]/NT//nathantraders/category?category=Raw rice&sub_category=Full rice">P.L Raw rice (Maavu)</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://[::1]/NT//nathantraders/category?category=Raw rice&sub_category=Sona Ponni">Sona Ponni</a>
+                                    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://[::1]/NT//nathantraders/category?category=Raw rice&sub_category=Pongal rice (Seasonal)">Pongal rice (Seasonal)</a>
+                                    
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Boiled Rice</a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body-categories">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://[::1]/NT//nathantraders/category?category=Boiled rice">View All</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Ponni B.P.T</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Sona (Karnataka)</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">White ponni</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Steam Rice</a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body-categories">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://[::1]/NT//nathantraders/category?category=Steam rice">View All</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Broken rice</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Sona ponni</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Biryani Rice</a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body-categories">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://[::1]/NT//nathantraders/category?category=Biryani rice">View All</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Broken rice</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Full rice</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Seeraga Samba</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Tiffin Rice</a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse">
+                        <div class="panel-body-categories">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://[::1]/NT//nathantraders/category?category=Tiffin rice">View All</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">ADT-36</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Idly rice</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       <a href="http://www.jquery2dotnet.com">Puttu rice</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="http://[::1]/NT//nathantraders/all_products">Organic Rice</a>
+                        </h4>
+                    </div>
+                    <div id="collapse" class="panel-collapse collapse in">
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="http://[::1]/NT//nathantraders/all_products">Kerala rice (Rosekar)</a>
+                        </h4>
+                    </div>
+                    <div id="collapse" class="panel-collapse collapse in">
+
+                    </div>
+                </div>
+            </div>
+        
+
+    </div>
+</div>
+
+
+    
+</div>
+            <div class="col-md-9">
+
+                <div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="slide-image" src="http://[::1]/NT/images/rice1.jpg" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://[::1]/NT/images/rice2.jpg" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://[::1]/NT/images/rice3.jpg" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div> 
+
+                <div class="row">
+                <p class="lead">Most Popular products</p>
+                <div class="col-sm-5 col-lg-4 col-md-5">
+                      	  <div class="thumbnail sig-pro">
+                      		  	<a href="http://[::1]/NT//nathantraders/product?product_id=1">
+                      		  	<div class="row">
+                        		<div class="col-xs-2 col-lg-2 col-md-2">
+                        	 	</div> </div>
+                            	<img src="http://[::1]/NT/images/1/a.jpg" alt="">
+                            	<div class="caption">
+                                <h4 class="text-center" style="margin-top: 0px; margin-bottom:5px;"><a href="http://[::1]/NT//nathantraders/product?product_id=1">
+                                Chennai Gate-25Kgs</a>
+                                </h4>
+                                <p class="text-center" style="color:green; font-size:16px; margin-bottom:0px;"><strong>New Price: Rs.1230</strong></p>
+                                <p class="text-center" style="color:#764035; margin:0px;"><s>Old Price: Rs.1200</s></p>
+                                	<div class="text-center">
+                                		<button type= "button" data-toggle="modal" data-target="#cart_success" onclick="add_to_cart(1);" class="btn btn-primary">Add to cart</button>
+                                	</div>
+                            </div></div></div><div class="col-sm-5 col-lg-4 col-md-5">
+                      	  <div class="thumbnail sig-pro">
+                      		  	<a href="http://[::1]/NT//nathantraders/product?product_id=2">
+                      		  	<div class="row">
+                        		<div class="col-xs-2 col-lg-2 col-md-2">
+                        	 	</div> </div>
+                            	<img src="http://[::1]/NT/images/2/a.jpg" alt="">
+                            	<div class="caption">
+                                <h4 class="text-center" style="margin-top: 0px; margin-bottom:5px;"><a href="http://[::1]/NT//nathantraders/product?product_id=2">
+                                SLM Gold-Five star-25Kgs</a>
+                                </h4>
+                                <p class="text-center" style="color:green; font-size:16px; margin-bottom:0px;"><strong>New Price: Rs.1230</strong></p>
+                                <p class="text-center" style="color:#764035; margin:0px;"><s>Old Price: Rs.1200</s></p>
+                                	<div class="text-center">
+                                		<button type= "button" data-toggle="modal" data-target="#cart_success" onclick="add_to_cart(2);" class="btn btn-primary">Add to cart</button>
+                                	</div>
+                            </div></div></div><div class="col-sm-5 col-lg-4 col-md-5">
+                      	  <div class="thumbnail sig-pro">
+                      		  	<a href="http://[::1]/NT//nathantraders/product?product_id=3">
+                        		<div class= "row">
+                        		<div class="col-xs-2 col-lg-2 col-md-2">
+                        			<img src="http://[::1]/NT/images/new.png"  class= "img-responsive img-circle"style= "position:absolute"; alt="">
+                        	 	</div> </div>
+                            	<img src="http://[::1]/NT/images/3/a.jpg" alt="">
+                            	<div class="caption">
+                                <h4 class="text-center" style="margin-top: 0px; margin-bottom:5px;"><a href="http://[::1]/NT//nathantraders/product?product_id=3">
+                                Classic Supreme-25Kgs</a>
+                                </h4>
+                                <p class="text-center" style="color:green; font-size:16px; margin-bottom:0px;"><strong>New Price: ₹ 1275</strong></p>
+                                <p class="text-center" style="color:#764035; margin:0px;"><s>Old Price: Rs.1260</s></p>
+                                	<div class="text-center">
+                                		<button type= "button" data-toggle="modal" data-target="#cart_success" onclick="add_to_cart(3);" class="btn btn-primary">Add to cart</button>
+                                	</div>
+                            </div></div></div><div class="col-sm-5 col-lg-4 col-md-5">
+                      	  <div class="thumbnail sig-pro">
+                      		  	<a href="http://[::1]/NT//nathantraders/product?product_id=4">
+                        		<div class= "row">
+                        		<div class="col-xs-2 col-lg-2 col-md-2">
+                        			<img src="http://[::1]/NT/images/new.png"  class= "img-responsive img-circle"style= "position:absolute"; alt="">
+                        	 	</div> </div>
+                            	<img src="http://[::1]/NT/images/4/a.jpg" alt="">
+                            	<div class="caption">
+                                <h4 class="text-center" style="margin-top: 0px; margin-bottom:5px;"><a href="http://[::1]/NT//nathantraders/product?product_id=4">
+                                India Gate - Classic-25Kgs</a>
+                                </h4>
+                                <p class="text-center" style="color:green; font-size:16px; margin-bottom:0px;"><strong>New Price: ₹ 1260</strong></p>
+                                <p class="text-center" style="color:#764035; margin:0px;"><s>Old Price: Rs.1275</s></p>
+                                	<div class="text-center">
+                                		<button type= "button" data-toggle="modal" data-target="#cart_success" onclick="add_to_cart(4);" class="btn btn-primary">Add to cart</button>
+                                	</div>
+                            </div></div></div><div class="col-sm-5 col-lg-4 col-md-5">
+                      	  <div class="thumbnail sig-pro">
+                      		  	<a href="http://[::1]/NT//nathantraders/product?product_id=5">
+                        		<div class= "row">
+                        		<div class="col-xs-2 col-lg-2 col-md-2">
+                        			<img src="http://[::1]/NT/images/new.png"  class= "img-responsive img-circle"style= "position:absolute"; alt="">
+                        	 	</div> </div>
+                            	<img src="http://[::1]/NT/images/5/a.jpg" alt="">
+                            	<div class="caption">
+                                <h4 class="text-center" style="margin-top: 0px; margin-bottom:5px;"><a href="http://[::1]/NT//nathantraders/product?product_id=5">
+                                India Gate-super-25Kgs</a>
+                                </h4>
+                                <p class="text-center" style="color:green; font-size:16px; margin-bottom:0px;"><strong>New Price: ₹ 1270</strong></p>
+                                <p class="text-center" style="color:#764035; margin:0px;"><s>Old Price: Rs.1275</s></p>
+                                	<div class="text-center">
+                                		<button type= "button" data-toggle="modal" data-target="#cart_success" onclick="add_to_cart(5);" class="btn btn-primary">Add to cart</button>
+                                	</div>
+                            </div></div></div><div class="col-sm-5 col-lg-4 col-md-5">
+                      	  <div class="thumbnail sig-pro">
+                      		  	<a href="http://[::1]/NT//nathantraders/product?product_id=6">
+                        		<div class= "row">
+                        		<div class="col-xs-2 col-lg-2 col-md-2">
+                        			<img src="http://[::1]/NT/images/new.png"  class= "img-responsive img-circle"style= "position:absolute"; alt="">
+                        	 	</div> </div>
+                            	<img src="http://[::1]/NT/images/6/a.jpg" alt="">
+                            	<div class="caption">
+                                <h4 class="text-center" style="margin-top: 0px; margin-bottom:5px;"><a href="http://[::1]/NT//nathantraders/product?product_id=6">
+                                rice1-75Kgs</a>
+                                </h4>
+                                <p class="text-center" style="color:green; font-size:16px; margin-bottom:0px;"><strong>New Price: ₹ 2412</strong></p>
+                                <p class="text-center" style="color:#764035; margin:0px;"><s>Old Price: Rs.2244</s></p>
+                                	<div class="text-center">
+                                		<button type= "button" data-toggle="modal" data-target="#cart_success" onclick="add_to_cart(6);" class="btn btn-primary">Add to cart</button>
+                                	</div>
+                            </div></div></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+<footer class="footer1">
+    <div class="container">
+        <div class="row"><!-- row -->
+            <div class="col-lg-3 col-md-3"><!-- widgets column left -->
+                <ul class="list-unstyled clear-margins"><!-- widgets -->
+                    <li class="widget-container widget_nav_menu"><!-- widgets list -->
+                        <h1 class="title-widget">Help</h1>
+                        <ul>
+                            <li><a  href="http://[::1]/NT//s/about_us"><i class="fa fa-angle-double-right"></i> About Us</a></li>
+                            <li><a  href="http://[::1]/NT//s/contact_us"><i class="fa fa-angle-double-right"></i> Contact Us</a></li>
+                            <li><a  href="#"><i class="fa fa-angle-double-right"></i> FAQ</a></li>
+                            <li><a  href="http://[::1]/NT//nathantraders/areas_we_serve"><i class="fa fa-angle-double-right"></i> Delivery Info</a></li>
+                            <li><a  href="#"><i class="fa fa-angle-double-right"></i> Bulk Orders</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- widgets column left end -->
+            <div class="col-lg-3 col-md-3"><!-- widgets column left -->
+                <ul class="list-unstyled clear-margins"><!-- widgets -->
+                    <li class="widget-container widget_nav_menu"><!-- widgets list -->
+                        <h1 class="title-widget">Customer Service</h1>
+                        <ul>
+                            <li><a  href="http://[::1]/NT//s/return_policy"><i class="fa fa-angle-double-right"></i>  Return policy</a></li>
+                            <li><a  href="http://[::1]/NT//s/refund_policy"><i class="fa fa-angle-double-right"></i>  Refund Policy</a></li>
+                            <li><a  href="http://[::1]/NT//s/cancellation_policy"><i class="fa fa-angle-double-right"></i>  Cancellation Policy</a></li>
+                            <li><a  href="http://[::1]/NT//s/privacy_policy"><i class="fa fa-angle-double-right"></i>  Privacy Policy</a></li>
+                            <li><a  href="http://[::1]/NT//s/terms_and_conditions"><i class="fa fa-angle-double-right"></i>  Terms & conditions</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- widgets column left end -->
+            <div class="col-lg-3 col-md-3" style="inline;"><!-- widgets column left -->
+                <ul class="list-unstyled clear-margins"><!-- widgets -->
+                    <li class="widget-container widget_nav_menu"><!-- widgets list -->
+                        <h1 class="title-widget">Social media</h1>
+                        <ul>
+                            <div class="social-icons">
+                            <ul class="nomargin">
+                                <a href="https://www.facebook.com/bootsnipp"><i class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a>
+                                <a href="https://twitter.com/bootsnipp"><i class="fa fa-twitter-square fa-3x social-tw" id="social"></i></a>
+                                <a href="https://plus.google.com/+Bootsnipp-page"><i class="fa fa-google-plus-square fa-3x social-gp" id="social"></i></a>
+                                <a href="mailto:bootsnipp@gmail.com"><i class="fa fa-envelope-square fa-3x social-em" id="social"></i></a>
+                            </ul>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- widgets column left end -->
+
+        </div>
+    </div>
+</footer>
+<!--header-->
+
+<div class="footer-bottom vcenter">
+<p class="text-center" style="color: #CDC8B1">Designed and created by <a href="" style="color: #CDC8B1">Yeshwanth Gunasekaran</a> & <a href="" style="color: #CDC8B1">Abishek Ravindranathan</a> </p>
+    <script src="http://[::1]/NT/js/jquery.js"></script>    
+
+    <script src="http://[::1]/NT/js/bootstrap.min.js"></script>
+    <link href="http://[::1]/NT/css/footer.css" rel="stylesheet">
+    <link href="http://[::1]/NT/font/css/font-awesome.min.css" rel="stylesheet">
+</div>
+</html>
